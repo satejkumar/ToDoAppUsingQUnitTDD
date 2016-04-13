@@ -61,4 +61,5 @@ function ToDo() {
     };
 
     this.fetchTasks();
+    this.renderTasks();
 }
