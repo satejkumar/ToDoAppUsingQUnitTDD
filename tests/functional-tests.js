@@ -74,6 +74,7 @@ QUnit.test('Create a task', function(assert) {
 QUnit.test('Test task render', function(assert) {
     var todo = new ToDo();
     todo.tasks = this.tasks;
+    todo.renderTasks();
 
     var $tasks = $('#tasks p');
     assert.strictEqual($tasks.length, todo.tasks.length, 'Task count is correct.');
@@ -94,6 +95,7 @@ QUnit.test('Test task complete.', function(assert) {
     // Mark the first task as complete.
     var todo = new ToDo();
     todo.tasks = this.tasks;
+    todo.renderTasks();
 
     var $first_task = $('#tasks p:first');
     var $first_task_checkbox = $first_task.find(':checkbox');
@@ -115,6 +117,8 @@ QUnit.test('Test create task button and text fields', function(assert) {
 
 QUnit.test('Reload tasks display', function(assert) {
     var todo = new ToDo();
+    todo.fetchTasks();
+    todo.renderTasks();
     var $tasks = $('#tasks p');
 
     for (var i in todo.tasks) {
